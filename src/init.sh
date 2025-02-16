@@ -6,14 +6,14 @@ main() {
 
   case "$DISTRO" in
     "Ubuntu")
-      echo "Detected Debian-Based Linux"
-      install_common_configurations
+      echo "Detected Ubuntu Linux"
       install_ubuntu
+      install_common_configurations
       ;;
     "Fedora Linux")
       echo "Detected Fedora Linux"
-      install_common_configurations
       install_fedora
+      install_common_configurations
       ;;
     *)
       echo "Unknown distribution: $DISTRO - Exiting" 1>&2
@@ -50,7 +50,8 @@ install_common_configurations() {
 
 install_ubuntu() {
   echo "Installing Ubuntu specific configurations"
-  #./init_ubuntu.sh
+  chmod +x ./Distros/Ubuntu/base_apt_installations.sh
+  ./Distros/Ubuntu/init_ubuntu.sh
 }
 
 install_fedora() {
