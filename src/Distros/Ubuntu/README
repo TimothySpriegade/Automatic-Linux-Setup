@@ -1,0 +1,12 @@
+### Prerequisites
+install git before running the script
+```bash
+sudo apt install git -y # Ubuntu
+sudo dnf install git -y # Fedora
+```
+
+### Installation
+clone the repository
+```bash
+git clone https://github.com/TimothySpriegade/Automatic-Linux-Setup.git
+```
