@@ -50,7 +50,7 @@ install_common_configurations() {
 
 install_ubuntu() {
   echo "Installing Ubuntu specific configurations"
-  chmod +x ./Distros/Ubuntu/base_apt_installations.sh
+  sudo chmod +x ./Distros/Ubuntu/base_apt_installations.sh
   ./Distros/Ubuntu/init_ubuntu.sh
 }
 
