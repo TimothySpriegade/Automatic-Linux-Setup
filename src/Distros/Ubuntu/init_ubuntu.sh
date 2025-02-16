@@ -13,3 +13,7 @@ give_permission_to_execute(){
   sudo chmod +x ./flatpak.sh
   sudo chmod +x ./brave.sh
 }
+
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+  main "$@"
+fi
