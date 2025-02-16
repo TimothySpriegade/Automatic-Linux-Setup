@@ -2,14 +2,14 @@
 
 main(){
   give_permission_to_execute
-  ./base_apt_installations.sh
+  ./update_system.sh
   ./flatpak.sh
   ./brave.sh
 }
 
 give_permission_to_execute(){
   echo "Giving permission to execute"
-  sudo chmod +x ./base_apt_installations.sh
+  sudo chmod +x ./update_system.sh
   sudo chmod +x ./flatpak.sh
   sudo chmod +x ./brave.sh
 }
