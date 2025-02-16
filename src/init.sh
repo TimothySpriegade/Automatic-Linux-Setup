@@ -1,5 +1,27 @@
 #!/usr/bin/env bash
 
+main() {
+  check_root
+  detect_distro
+
+  case "$DISTRO" in
+    "Ubuntu")
+      echo "Detected Debian-Based Linux"
+      install_common_configurations
+      install_ubuntu
+      ;;
+    "Fedora Linux")
+      echo "Detected Fedora Linux"
+      install_common_configurations
+      install_fedora
+      ;;
+    *)
+      echo "Unknown distribution: $DISTRO - Exiting" 1>&2
+      exit 1
+      ;;
+  esac
+}
+
 check_root() {
   if [ "$(id -u)" -ne 0 ]; then
     echo "This script must be run as root" 1>&2
@@ -14,39 +36,26 @@ has_os_release_file() {
 detect_distro() {
   if has_os_release_file; then
     . /etc/os-release
-    OS=$NAME
+    DISTRO=$NAME
   else
     echo "This script requires a system with /etc/os-release" 1>&2
     exit 1
   fi
 }
 
-main() {
-  check_root
-  detect_distro
-
-  case "$DISTRO" in
-    "Ubuntu")
-      echo "Detected Debian-Based Linux"
-      install_ubuntu
-      ;;
-    "Fedora Linux")
-      echo "Detected Fedora Linux"
-      install_fedora
-      ;;
-    *)
-      echo "Unknown distribution: $DISTRO - Exiting" 1>&2
-      exit 1
-      ;;
-  esac
+install_common_configurations() {
+  echo "Installing common configurations"
+  #./install_common.sh
 }
 
 install_ubuntu() {
-  ./install_ubuntu.sh
+  echo "Installing Ubuntu specific configurations"
+  #./init_ubuntu.sh
 }
 
 install_fedora() {
-  ./install_fedora.sh
+  echo "Installing Fedora specific configurations"
+  #./init_fedora.sh
 }
 
 if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then

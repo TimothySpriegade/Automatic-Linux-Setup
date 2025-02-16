@@ -35,6 +35,7 @@ setup() {
   check_root() { :; }
   detect_distro() { DISTRO="Ubuntu"; }
   install_ubuntu() { echo "install_ubuntu called"; }
+  install_common_configurations() { echo "install_common_configurations called"; }
 
   # When
   run main
@@ -50,6 +51,7 @@ setup() {
   check_root() { :; }
   detect_distro() { DISTRO="Fedora Linux"; }
   install_fedora() { echo "install_fedora called"; }
+  install_common_configurations() { echo "install_common_configurations called"; }
 
   # When
   run main
@@ -64,6 +66,7 @@ setup() {
   # Given
   check_root() { :; }
   detect_distro() { DISTRO="Alpine"; }
+  install_common_configurations() { echo "install_common_configurations called"; }
 
   # When
   run main
